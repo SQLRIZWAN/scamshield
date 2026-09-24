@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ScamShield — Scam Report Builder by @sql.ssl</title>
+<meta name="description" content="Turn a scam encounter into a professional, ready-to-file complaint report. Built by @sql.ssl." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#">
+      <span class="brand-mark">🛡️</span>
+      <span class="brand-text">Scam<span class="accent">Shield</span></span>
+    </a>
+    <div class="top-right">
+      <span class="madeby">Built by <a href="https://instagram.com/sql.ssl" target="_blank" rel="noopener">©&nbsp;@sql.ssl</a></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="pill">AI-powered · Free · No sign-up</div>
+    <h1>Turn a scam into a <span class="grad">report that gets action</span>.</h1>
+    <p class="lead">
+      Fill in what happened. ScamShield writes a clean, professional complaint report,
+      tells you exactly where to send it, and copies it for you in one click.
+    </p>
+    <div class="hero-badges">
+      <span>🇵🇰 NCCIA &amp; PTA ready</span>
+      <span>📄 PDF / TXT export</span>
+      <span>🤖 AI-written report</span>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="wrap grid-main">
+    <div class="card">
+      <h2 class="card-title">1 · Describe the scam</h2>
+      <p class="card-sub">The more detail, the stronger the report. Only fill what you know.</p>
+
+      <form id="scamForm" class="form">
+        <div class="row">
+          <label class="field">
+            <span>Platform</span>
+            <select id="platform">
+              <option>Instagram</option>
+              <option>WhatsApp</option>
+              <option>Facebook</option>
+              <option>Telegram</option>
+              <option>TikTok</option>
+              <option>Website / App</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Scammer's username / phone / link</span>
+            <input id="suspect" type="text" placeholder="e.g. @scam_id  or  0300XXXXXXX" required />
+          </label>
+        </div>
+
+        <div class="row">
+          <label class="field">
+            <span>Scam type</span>
+            <select id="scamType">
+              <option>Account hack / recovery "service"</option>
+              <option>OTP / verification code fraud</option>
+              <option>Advance payment / advance fee fraud</option>
+              <option>Fake online store / non-delivery</option>
+              <option>Job / task scam (pay-to-work)</option>
+              <option>Investment / crypto scam</option>
+              <option>Loan app / blackmail</option>
+              <option>Impersonation / fake profile</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Financial loss (PKR) — optional</span>
+            <input id="loss" type="number" min="0" placeholder="e.g. 5000" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>What happened? (your own words)</span>
+          <textarea id="details" rows="5" placeholder="Kya hua, kab hua, kaise contact hua, kya maanga, kya diya..." required></textarea>
+        </label>
+
+        <label class="field">
+          <span>Evidence you have (links, screenshots, transaction IDs, numbers)</span>
+          <textarea id="evidence" rows="3" placeholder="Screenshots, chat links, payment ref, bank txn id, WhatsApp number..."></textarea>
+        </label>
+
+        <fieldset class="flags">
+          <legend>Red flags you noticed (tick all that apply)</legend>
+          <div class="flags-grid">
+            <label><input type="checkbox" value="Asked for OTP / verification code" /> Asked for OTP / code</label>
+            <label><input type="checkbox" value="Asked for advance payment first" /> Asked for advance payment</label>
+            <label><input type="checkbox" value="Brand-new account with very few followers" /> New account, few followers</label>
+            <label><input type="checkbox" value="Promised to hack or recover an account" /> Promised to "hack/recover"</label>
+            <label><input type="checkbox" value="Pressured me to act urgently" /> Urgency / pressure</label>
+            <label><input type="checkbox" value="Only talks on DM / private chat" /> Only DM / private chat</label>
+            <label><input type="checkbox" value="Refused video call or proof" /> No proof / refused call</label>
+            <label><input type="checkbox" value="Number changed or blocked me after payment" /> Blocked me after payment</label>
+          </div>
+        </fieldset>
+
+        <div class="row">
+          <label class="field">
+            <span>Your name (for the complaint)</span>
+            <input id="reporter" type="text" placeholder="Full name" />
+          </label>
+          <label class="field">
+            <span>Your contact (phone / email)</span>
+            <input id="contact" type="text" placeholder="e.g. 03XXXXXXXXX or email" />
+          </label>
+        </div>
+        <label class="field">
+          <span>Your city (optional)</span>
+          <input id="city" type="text" placeholder="e.g. Lahore" />
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn primary" id="generateBtn">
+            <span class="btn-label">Generate Report</span>
+          </button>
+          <button type="button" class="btn ghost" id="demoBtn">Load example</button>
+        </div>
+        <p class="hint" id="statusLine"></p>
+      </form>
+    </div>
+
+    <!-- RESULT -->
+    <div class="card result hidden" id="resultCard">
+      <div class="result-head">
+        <h2 class="card-title">2 · Your report</h2>
+        <span class="watermark">© @sql.ssl</span>
+      </div>
+      <div class="report" id="reportOutput"></div>
+
+      <div class="actions">
+        <button class="btn primary" id="copyBtn">Copy report</button>
+        <button class="btn ghost" id="downloadBtn">Download .txt</button>
+        <button class="btn ghost" id="printBtn">Save as PDF</button>
+      </div>
+      <div id="aiNote" class="ai-note"></div>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <section class="wrap">
+    <div class="card submit-card">
+      <h2 class="card-title">3 · Where to send it</h2>
+      <p class="card-sub">
+        Open the official complaint portal — your report is copied to your clipboard so you can paste it straight in.
+        These are the authorities that actually act in Pakistan.
+      </p>
+      <div class="submit-grid">
+        <button class="submit-tile" data-copy-portal="nccia">
+          <strong>NCCIA — Cyber Crime</strong>
+          <span>Helpline 1799 · complaint.nccia.gov.pk</span>
+        </button>
+        <button class="submit-tile" data-copy-portal="pta">
+          <strong>PTA — SIM &amp; content</strong>
+          <span>0800-55055 · complaint.pta.gov.pk</span>
+        </button>
+        <button class="submit-tile" data-copy-portal="bank">
+          <strong>Your bank — fraud desk</strong>
+          <span>Freeze the beneficiary account now</span>
+        </button>
+        <button class="submit-tile" data-copy-portal="meta">
+          <strong>Instagram / Meta report</strong>
+          <span>Report the account or ad</span>
+        </button>
+      </div>
+      <p class="hint">Tip: report the same day. Bank freezes only work while the money is still there.</p>
+    </div>
+  </section>
+
+  <!-- AWARENESS -->
+  <section class="wrap">
+    <h2 class="section-title">Golden rules</h2>
+    <div class="rules">
+      <div class="rule">🔐 OTP, password ya CVV <b>kabhi kisi ko na dein</b> — bank bhi nahi maangta.</div>
+      <div class="rule">🚫 "Guaranteed hack / recover" wali koi service <b>100% scam</b> hai.</div>
+      <div class="rule">💸 Advance payment maangne wala "job" ya "task" = scam.</div>
+      <div class="rule">🏦 Sirf official app / website se paisa bhejein.</div>
+      <div class="rule">📞 Shak ho to <b>1799</b> pe call karein (NCCIA).</div>
+      <div class="rule">📸 Sab kuch screenshot kar ke rakhein — proof hi case jeetata hai.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> ScamShield · Built by <a href="https://instagram.com/sql.ssl" target="_blank" rel="noopener">@sql.ssl</a></span>
+    <span class="foot-note">Awareness &amp; reporting tool. Not legal advice.</span>
+  </div>
+</footer>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
