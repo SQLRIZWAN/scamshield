@@ -19,7 +19,12 @@ const SS = {
   key:
     localStorage.getItem('ss_gemini_key') ||
     'AIzaSyBZKQ933r79xVvqOX1vUtkxWG_l801HB4M',
-  models: ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-flash-lite'],
+  models: [
+    'gemini-3-flash-preview',
+    'gemini-flash-latest',
+    'gemini-3.8-flash',
+    'gemini-2.5-flash',
+  ],
   watermark: '© @sql.ssl',
   portals: {
     nccia: 'https://complaint.nccia.gov.pk/',
